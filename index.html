@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Spots · Tokyo</title>
+<script>
+function imgFallback(el,e){const d=document.createElement('div');d.className='ph';d.textContent=e;el.replaceWith(d);}
+</script>
+<style>
+:root{--bg:#faf9f7;--card:#fff;--ink:#1a1a1a;--muted:#8a8a8a;--line:#ececec;--chip:#f1f0ed;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;padding:48px 20px 80px;}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
+h1{font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.02em;}
+.sub{color:var(--muted);font-size:14px;margin:0;}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px;}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;}
+.chip:hover{border-color:#cfcfcf;}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.18s;}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
+.thumb{aspect-ratio:3/2;width:100%;object-fit:cover;display:block;background:linear-gradient(135deg,#e9e6e1,#d8d3cc);}
+.ph{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(135deg,#eceae6,#dcd6cd);color:#b7b0a6;}
+.body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.name{font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em;}
+.meta{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:11px;background:var(--chip);color:#5a5650;padding:3px 9px;border-radius:999px;}
+.note{font-size:13.5px;color:#3a3a3a;margin:0;}
+.foot{margin-top:auto;padding-top:4px;}
+.btn{display:inline-block;font-size:13px;text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:7px 16px;color:var(--ink);transition:.15s;}
+.btn:hover{background:var(--ink);color:#fff;}
+footer{margin-top:48px;color:#b0b0b0;font-size:12px;text-align:center;}
+footer a{color:#8a8a8a;}
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<p class="eyebrow">Date Spots</p>
+<h1>東京・デートスポット図書館</h1>
+<p class="sub">全6件 · 最終更新 2026/06/16 · クリーン／ミニマルで使えるところだけ</p>
+</header>
+<div class="filters">
+<button class="chip active" data-f="all">すべて</button>
+<button class="chip" data-f="中目黒">中目黒</button>
+<button class="chip" data-f="代官山">代官山</button>
+<button class="chip" data-f="rain">☔ 雨の日OK</button>
+</div>
+<div class="grid">
+
+<article class="card" data-area="中目黒" data-rain="1">
+<img class="thumb" loading="lazy" alt="Yellow Nakameguro" onerror="imgFallback(this,'☕')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOnH2bXEs85QFifCs9yMnw-MqibNQlZ7neInT7EmkIIJXouScUGdMIHPxnKsmjwhbhCyU8ZtqOO1umMElzwUwYZFK1Hv-R4N1dFPhB8-u2g3FcIZNcr3UBOggwfXq0-O-1U0rTIvsFUSyukr9NDz9gm=s4800-w800-h600">
+<div class="body">
+<h3 class="name">Yellow Nakameguro</h3>
+<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.9</span><span>·</span><span>☔ 雨OK</span></div>
+<div class="tags"><span class="tag">カフェ</span><span class="tag">バー・一杯</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<p class="note">スタイリッシュなカフェ→バー。レビューに「デートに最適」の声。14時〜深夜で使い勝手◎。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=16746781121485771720">Googleマップ →</a></div>
+</div>
+</article>
+
+<article class="card" data-area="中目黒" data-rain="1">
+<img class="thumb" loading="lazy" alt="NAKAMEGURO GALERIA" onerror="imgFallback(this,'🍝')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOr6QdimKab0yc8sT54mftwacDAOk7EOUTLe7ddlOvYWZz_xQ02PWXHTub_P2HMiXD4gBSStRBtHyJ4Bt5d4Mh0zCqL8xIU1VMW-puiBhqv6QIEpkTH8FfjeR9SOBhhniJIfjg5tjbzRhFj=s4800-w800-h600">
+<div class="body">
+<h3 class="name">NAKAMEGURO GALERIA</h3>
+<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.8</span><span>·</span><span>☔ 雨OK</span></div>
+<div class="tags"><span class="tag">ディナー</span><span class="tag">隠れ家</span><span class="tag">おしゃれ</span><span class="tag">記念日</span></div>
+<p class="note">住宅街の隠れ家イタリアン。ドリンクフリーフローでコスパ◎。渋谷の喧騒を抜けた落ち着き。要予約。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=94997357445889808">Googleマップ →</a></div>
+</div>
+</article>
+
+<article class="card" data-area="中目黒" data-rain="1">
+<div class="ph">🍕</div>
+<div class="body">
+<h3 class="name">Wine Farm TAMURA</h3>
+<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.8</span><span>·</span><span>☔ 雨OK</span></div>
+<div class="tags"><span class="tag">ディナー</span><span class="tag">バー・一杯</span><span class="tag">隠れ家</span><span class="tag">記念日</span></div>
+<p class="note">薄焼きピッツァと肉が評判の小さなイタリアン×ワインバー。持ち込み可。月・水休・要予約。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Wine%20Farm%20TAMURA&query_place_id=ChIJz2GWgIKLGGARbNoHq3Hyhpc">Googleマップ →</a></div>
+</div>
+</article>
+
+<article class="card" data-area="代官山" data-rain="1">
+<img class="thumb" loading="lazy" alt="蔦屋書店 代官山" onerror="imgFallback(this,'📚')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZO7cgkU_ODpihdKsnP6vpbltnUYi-JJ5cqwDqO3EZcU2A1WLHmnr-TDHXak3nrLjg8mjDYte3vRelFpC9lbFG5iNPQujTyoPPRPkyXxRgUDggZPhMMQv3VV-3Eh23LlBl_OZcqUGxzaYMxhfw=s4800-w800-h600">
+<div class="body">
+<h3 class="name">蔦屋書店 代官山（T-SITE）</h3>
+<div class="meta"><span>代官山</span><span>·</span><span>¥</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨OK</span></div>
+<div class="tags"><span class="tag">本・カルチャー</span><span class="tag">カフェ</span><span class="tag">静か</span><span class="tag">昼デート</span></div>
+<p class="note">写真・建築・アート本が充実。静かで会話が弾む。Share Loungeで一息も。雨・昼デートの鉄板。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=15490653164204088489">Googleマップ →</a></div>
+</div>
+</article>
+
+<article class="card" data-area="中目黒" data-rain="1">
+<img class="thumb" loading="lazy" alt="葡萄酒処 SCAD" onerror="imgFallback(this,'🍷')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOqkTQNDCM7rAzAm_6NFC_dK43ZUvuAXdsM8GjROzSyROyT6g6V2qDyOkrQNGaq9FpvYs06JRzgpxOAXBXgK2dzzt0whYSZq_drTIlMZXFUvn2P0DKfy3adi1pdaypV4bvwSryH_J8l0iw9=s4800-w800-h600">
+<div class="body">
+<h3 class="name">葡萄酒処 SCAD</h3>
+<div class="meta"><span>中目黒</span><span>·</span><span>¥¥¥</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨OK</span></div>
+<div class="tags"><span class="tag">バー・一杯</span><span class="tag">隠れ家</span><span class="tag">おしゃれ</span><span class="tag">2軒目</span></div>
+<p class="note">2Fの隠れ家ワインバー。ソムリエ常駐、セレクション豊富。チャージあり・やや高めで2軒目向き。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=17442040676670836745">Googleマップ →</a></div>
+</div>
+</article>
+
+<article class="card" data-area="中目黒" data-rain="1">
+<div class="ph">🍝</div>
+<div class="body">
+<h3 class="name">Il Lupone</h3>
+<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.3</span><span>·</span><span>☔ 雨OK</span></div>
+<div class="tags"><span class="tag">ディナー</span><span class="tag">隠れ家</span><span class="tag">リラックス</span><span class="tag">初デート</span></div>
+<p class="note">駅から徒歩10分の本格イタリア20州料理。ランチコスパ良。25席・要予約。月休。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Il%20Lupone&query_place_id=ChIJOYOZFTiLGGARqSGmAo2Z5QA">Googleマップ →</a></div>
+</div>
+</article>
+
+</div>
+<footer>写真：Google マップ · データ：📍 Date Spots Library（Notion） · <a href="https://app.notion.com/p/5fb254cf5f634ed59285646958bc8855">Notionで開く</a></footer>
+</div>
+<script>
+const chips=[...document.querySelectorAll('.chip')];
+const cards=[...document.querySelectorAll('.card')];
+chips.forEach(c=>c.addEventListener('click',()=>{
+  chips.forEach(x=>x.classList.remove('active'));c.classList.add('active');
+  const f=c.dataset.f;
+  cards.forEach(card=>{
+    let show = f==='all' ? true : (f==='rain' ? card.dataset.rain==='1' : card.dataset.area===f);
+    card.classList.toggle('hidden',!show);
+  });
+}));
+</script>
+</body>
+</html>
