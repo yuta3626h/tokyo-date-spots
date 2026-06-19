@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イベント・おでかけ</title>
+<script>function imgFallback(el,e){const d=document.createElement('div');d.className='ph';d.textContent=e;el.replaceWith(d);}</script>
+<style>
+:root{--bg:#faf9f7;--card:#fff;--ink:#1a1a1a;--muted:#8a8a8a;--line:#ececec;--chip:#f1f0ed;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px;margin:0 auto;padding:48px 20px 80px;}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
+h1{font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.02em;}
+.sub{color:var(--muted);font-size:14px;margin:0;}
+.nav{display:flex;gap:14px;margin:18px 0 0;font-size:13px;}
+.nav a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;}
+.nav a:hover{color:var(--ink);}
+.nav a.on{color:var(--ink);border-color:var(--ink);}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px;}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;}
+.chip:hover{border-color:#cfcfcf;}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.18s;}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
+.thumb{aspect-ratio:3/2;width:100%;object-fit:cover;display:block;background:linear-gradient(135deg,#e9e6e1,#d8d3cc);}
+.ph{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(135deg,#eceae6,#dcd6cd);color:#b7b0a6;}
+.body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.name{font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em;}
+.meta{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:7px;align-items:center;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:11px;background:var(--chip);color:#5a5650;padding:3px 9px;border-radius:999px;}
+.note{font-size:13.5px;color:#3a3a3a;margin:0;}
+.foot{margin-top:auto;padding-top:4px;}
+.btn{display:inline-block;font-size:13px;text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:7px 16px;color:var(--ink);transition:.15s;}
+.btn:hover{background:var(--ink);color:#fff;}
+footer{margin-top:48px;color:#b0b0b0;font-size:12px;text-align:center;}
+.hidden{display:none!important;}
+</style></head><body>
+<div class="wrap">
+<header>
+<p class="eyebrow">Events &amp; Outings</p>
+<h1>イベント・おでかけ</h1>
+<p class="sub">全12件 · 最終更新 2026/06/19</p>
+<nav class="nav">
+<a href="index.html">デート</a>
+<a href="fashion.html">ファッション</a>
+<a href="events.html" class="on">イベント</a>
+</nav>
+</header>
+<div class="filters"><button class="chip active" data-type="all">すべて</button><button class="chip" data-type="filter" data-val="気になる">気になる</button><button class="chip" data-type="filter" data-val="行く予定">行く予定</button><button class="chip" data-type="filter" data-val="予約済み">予約済み</button></div>
+<div class="grid">
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">調布国際音楽祭2026</h3>
+<div class="meta"><span>2026/06/20–2026/06/28</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">カルチャー・展示</span><span class="tag">週末向き</span><span class="tag">デート向き</span></div>
+<p class="note">テーマ「おいしい音楽、めしあがれ。」深大寺での弦楽四重奏（6/24）や無料コンサートあり。調布駅から徒歩圏内で「映画の街・調布でランチ＋クラシックはどう？」と誘いやすい。プロデューサー鈴木優人×ぱんだウインドオーケストラのオープニング（6/21）も見どころ。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.chofu-culture-community.org/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">W杯2026 日本 vs チュニジア パブリックビューイング</h3>
+<div class="meta"><span>2026/06/21</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">スポーツ観戦</span><span class="tag">週末向き</span><span class="tag">友達と</span><span class="tag">発売間近</span></div>
+<p class="note">日曜13:00キックオフ。MIYASHITA PARK屋上芝生の無料PV（要事前申込・三井不動産公式Ｘで応募）。ゲスト：稲本潤一さん登場。「W杯一緒に見に行かない？」渋谷の盛り上がりを体感。試合後は渋谷でそのまま続きへ。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://biz.shibuyabunka.com/event/1039/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">FIFA W杯2026 日本vsチュニジア PV</h3>
+<div class="meta"><span>2026/06/21</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">スポーツ観戦</span><span class="tag">週末向き</span><span class="tag">友達と</span><span class="tag">発売間近</span></div>
+<p class="note">キックオフ13:00 JST（日曜午後 — あと5日！）。オランダ戦2-2引き分けの次、グループ突破に勝ち点3が必要な重要戦。スポーツバーで友達と大声で応援が最高。HUB各店でDAZN PV実施（¥4,000/食事券¥3,000付）、東京ドームシティblue-ing!は早めに要確認。</p>
+
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">FIFA W杯2026 日本 グループ最終戦 PV</h3>
+<div class="meta"><span>2026/06/26</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">スポーツ観戦</span><span class="tag">友達と</span><span class="tag">発売間近</span></div>
+<p class="note">キックオフ8:00 JST（金曜朝 — あと10日）。グループ通過を懸けた大一番。HUBのW杯PVパッケージ（¥4,000/食事券¥3,000付）も選択肢。早起き観戦の口実に。結果次第で決勝T進出確定。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.pub-hub.com/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">明治神宮外苑 森のビアガーデン 2026</h3>
+<div class="meta"><span>2026/07/18–2026/08/31</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">季節・地域</span><span class="tag">週末向き</span><span class="tag">デート向き</span></div>
+<p class="note">7/18〜8/31。平日14:00〜、土日祝12:00〜22:30。緑の中で飲む都会の開放感。「軽く飲みに行かない？」と気軽に誘えるカジュアルな選択肢。神宮外苑花火と同エリア。</p>
+
+</div>
+</article>
+<article class="card" data-filter="行く予定" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">FUJI ROCK FESTIVAL '26</h3>
+<div class="meta"><span>2026/07/24–2026/07/26</span><span>·</span><span>行く予定</span></div>
+<div class="tags"><span class="tag">ライブ・フェス</span><span class="tag">要予約・抽選</span><span class="tag">友達と</span></div>
+<p class="note">参戦確定🎸 Day1: The xx（GS初）/ Day2: Khruangbin / Day3: Massive Attack。＋ Fujii Kaze・XG フジロックデビュー、maya ongaku 他。新帹線パック（JR東日本）要確認。タイムテーブル公開間近（本番約１ヶ月前）。持ち物・天気は7月入ったら再チェック。TINARIWEN・Japanese Breakfastはキャンセル。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.fujirockfestival.com/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="行く予定" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">FUJI ROCK FESTIVAL '26</h3>
+<div class="meta"><span>2026/07/24–2026/07/26</span><span>·</span><span>行く予定</span></div>
+<div class="tags"><span class="tag">ライブ・フェス</span><span class="tag">要予約・抽選</span><span class="tag">友達と</span></div>
+<p class="note">参戦確定。The XX（Day1）・Khruangbin（Day2）・Massive Attack（Day3）・Mitski・Hyukoh・Asian Kung-Fu Generation等出演。新幹線パック・宿は早めに手配を。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.fujirockfestival.com/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">隅田川花火大会 2026</h3>
+<div class="meta"><span>2026/07/25</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">季節・地域</span><span class="tag">週末向き</span><span class="tag">デート向き</span><span class="tag">友達と</span></div>
+<p class="note">東京の夏を代表する伝統花火、約2万発。浅草で屋台めし→花火の鉄板コース。「花火行かない？」の一言で誰でも誘いやすい。有料観覧席は5/10先着で発売済み（残数要確認）。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.sumidagawa-hanabi.com/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">江戸川区花火大会 2026（第51回）</h3>
+<div class="meta"><span>2026/06/13</span><span>·</span><span>2026/08/01</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">季節・地域</span><span class="tag">週末向き</span><span class="tag">デート向き</span><span class="tag">友達と</span><span class="tag">発売間近</span><span class="tag">要予約・抽選</span></div>
+<p class="note">東京最大級14,000発、19:15〜20:20。荒川対岸・市川市花火大会と同日開催で両岸から見られる特別な夏夜。有料席（一般発売6/13〜）は残数要確認。「浴衣で江戸川花火行かない？」の一言で誘える定番コース。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.city.edogawa.tokyo.jp/hanabi/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">神宮外苑花火大会 2026</h3>
+<div class="meta"><span>2026/08/08</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">季節・地域</span><span class="tag">ライブ・フェス</span><span class="tag">週末向き</span><span class="tag">デート向き</span><span class="tag">友達と</span><span class="tag">要予約・抽選</span></div>
+<p class="note">花火×アーティストライブの融合イベント、約1万発。花火打上19:30〜20:30。座席観覧で都会的な夏の夜を演出。「ライブ観ながら花火でどう？」とデートに誘いやすい。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.jinguhanabi.com/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="気になる" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">SUMMER SONIC 2026</h3>
+<div class="meta"><span>2026/08/14–2026/08/16</span><span>·</span><span>気になる</span></div>
+<div class="tags"><span class="tag">ライブ・フェス</span><span class="tag">週末向き</span><span class="tag">友達と</span></div>
+<p class="note">The Strokes・L'Arc-en-Ciel・Ado・BUMP OF CHICKENがヘッドライン（25周年）。★羊文学 出演確定（出演日は東京8/14-16のいずれか・要確認）。1DAY ¥21,000。一般発売5/30〜。「The Strokes目当てで行かない？」と誘える夏フェス。羊文学が出るなら絶対行きたい日に絞りたい。</p>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.summersonic.com/">開く →</a></div>
+</div>
+</article>
+<article class="card" data-filter="予約済み" data-flags="">
+<div class="ph">📍</div>
+<div class="body">
+<h3 class="name">羊文学 ライブ 2026</h3>
+<div class="meta"><span>2026/11/10</span><span>·</span><span>予約済み</span></div>
+<div class="tags"><span class="tag">ライブ・フェス</span><span class="tag">要予約・抽選</span></div>
+<p class="note">チケット確保済み。会場・開場時間は要確認（11/10前後）。確定次第このページに追記する。</p>
+
+</div>
+</article>
+</div>
+<footer>データ：Notion · GitHub Actionsで自動更新</footer>
+</div>
+<script>
+const chips=[...document.querySelectorAll('.chip')];
+const cards=[...document.querySelectorAll('.card')];
+chips.forEach(c=>c.addEventListener('click',()=>{
+  chips.forEach(x=>x.classList.remove('active'));c.classList.add('active');
+  const type=c.dataset.type, val=c.dataset.val;
+  cards.forEach(card=>{
+    let show=true;
+    if(type==='filter'){ show=(card.dataset.filter||'').split('|').includes(val); }
+    else if(type==='flag'){ show=(card.dataset.flags||'').split('|').includes(val); }
+    card.classList.toggle('hidden',!show);
+  });
+}));
+</script>
+</body></html>

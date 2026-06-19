@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Date Spots · Tokyo</title>
+<title>東京・デートスポット図書館</title>
 <script>function imgFallback(el,e){const d=document.createElement('div');d.className='ph';d.textContent=e;el.replaceWith(d);}</script>
 <style>
 :root{--bg:#faf9f7;--card:#fff;--ink:#1a1a1a;--muted:#8a8a8a;--line:#ececec;--chip:#f1f0ed;}
@@ -10,6 +10,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Bl
 .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
 h1{font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.02em;}
 .sub{color:var(--muted);font-size:14px;margin:0;}
+.nav{display:flex;gap:14px;margin:18px 0 0;font-size:13px;}
+.nav a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;}
+.nav a:hover{color:var(--ink);}
+.nav a.on{color:var(--ink);border-color:var(--ink);}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px;}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;}
 .chip:hover{border-color:#cfcfcf;}
@@ -29,225 +33,234 @@ h1{font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.02em;}
 .btn{display:inline-block;font-size:13px;text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:7px 16px;color:var(--ink);transition:.15s;}
 .btn:hover{background:var(--ink);color:#fff;}
 footer{margin-top:48px;color:#b0b0b0;font-size:12px;text-align:center;}
-footer a{color:#8a8a8a;}
 .hidden{display:none!important;}
 </style></head><body>
 <div class="wrap">
-<header><p class="eyebrow">Date Spots</p><h1>東京・デートスポット図書館</h1>
-<p class="sub">全20件 · 最終更新 2026/06/19 · クリーン／ミニマルで使えるところだけ</p></header>
-<div class="filters"><button class="chip active" data-f="all">すべて</button><button class="chip" data-f="中目黒">中目黒</button><button class="chip" data-f="代官山">代官山</button><button class="chip" data-f="蔵前">蔵前</button><button class="chip" data-f="恵比寿">恵比寿</button><button class="chip" data-f="rain">☔ 雨の日OK</button></div>
+<header>
+<p class="eyebrow">Date Spots</p>
+<h1>東京・デートスポット図書館</h1>
+<p class="sub">全20件 · 最終更新 2026/06/19</p>
+<nav class="nav">
+<a href="index.html" class="on">デート</a>
+<a href="fashion.html">ファッション</a>
+<a href="events.html">イベント</a>
+</nav>
+</header>
+<div class="filters"><button class="chip active" data-type="all">すべて</button><button class="chip" data-type="filter" data-val="中目黒">中目黒</button><button class="chip" data-type="filter" data-val="代官山">代官山</button><button class="chip" data-type="filter" data-val="蔵前">蔵前</button><button class="chip" data-type="filter" data-val="恵比寿">恵比寿</button><button class="chip" data-type="flag" data-val="雨の日OK">☔ 雨の日OK</button></div>
 <div class="grid">
-<article class="card" data-area="中目黒" data-rain="1">
-<img class="thumb" loading="lazy" alt="Yellow Nakameguro" onerror="imgFallback(this,'☕')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOnH2bXEs85QFifCs9yMnw-MqibNQlZ7neInT7EmkIIJXouScUGdMIHPxnKsmjwhbhCyU8ZtqOO1umMElzwUwYZFK1Hv-R4N1dFPhB8-u2g3FcIZNcr3UBOggwfXq0-O-1U0rTIvsFUSyukr9NDz9gm=s4800-w800-h600">
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<img class="thumb" loading="lazy" alt="Yellow Nakameguro" onerror="imgFallback(this,'📍')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOnH2bXEs85QFifCs9yMnw-MqibNQlZ7neInT7EmkIIJXouScUGdMIHPxnKsmjwhbhCyU8ZtqOO1umMElzwUwYZFK1Hv-R4N1dFPhB8-u2g3FcIZNcr3UBOggwfXq0-O-1U0rTIvsFUSyukr9NDz9gm=s4800-w800-h600">
 <div class="body">
 <h3 class="name">Yellow Nakameguro</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.9</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">バー・一杯</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.9</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">2軒目</span><span class="tag">雨の日</span><span class="tag">おしゃれ</span><span class="tag">リラックス</span><span class="tag">カフェ</span></div>
 <p class="note">スタイリッシュなカフェ→バー。レビューに「デートに最適」の声。シーシャあり。14時〜深夜で使い勝手◎</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=16746781121485771720">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=16746781121485771720">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<div class="ph">🍝</div>
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">Wine Farm TAMURA</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.8</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">ディナー</span><span class="tag">バー・一杯</span><span class="tag">隠れ家</span><span class="tag">記念日</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.8</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">記念日</span><span class="tag">サク飲み</span><span class="tag">隠れ家</span><span class="tag">ディナー</span><span class="tag">バー・一杯</span></div>
 <p class="note">薄焼きピッツァと肉が評判の小さなイタリアン×ワインバー。持ち込み可(コルク料¥3000)。月・水休。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Wine%20Farm%20TAMURA&amp;query_place_id=ChIJz2GWgIKLGGARbNoHq3Hyhpc">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Wine%20Farm%20TAMURA&amp;query_place_id=ChIJz2GWgIKLGGARbNoHq3Hyhpc">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<img class="thumb" loading="lazy" alt="NAKAMEGURO GALERIA" onerror="imgFallback(this,'🍝')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOr6QdimKab0yc8sT54mftwacDAOk7EOUTLe7ddlOvYWZz_xQ02PWXHTub_P2HMiXD4gBSStRBtHyJ4Bt5d4Mh0zCqL8xIU1VMW-puiBhqv6QIEpkTH8FfjeR9SOBhhniJIfjg5tjbzRhFj=s4800-w800-h600">
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<img class="thumb" loading="lazy" alt="NAKAMEGURO GALERIA" onerror="imgFallback(this,'📍')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOr6QdimKab0yc8sT54mftwacDAOk7EOUTLe7ddlOvYWZz_xQ02PWXHTub_P2HMiXD4gBSStRBtHyJ4Bt5d4Mh0zCqL8xIU1VMW-puiBhqv6QIEpkTH8FfjeR9SOBhhniJIfjg5tjbzRhFj=s4800-w800-h600">
 <div class="body">
 <h3 class="name">NAKAMEGURO GALERIA</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.8</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">ディナー</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.8</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">記念日</span><span class="tag">おしゃれ</span><span class="tag">隠れ家</span><span class="tag">リラックス</span><span class="tag">ディナー</span></div>
 <p class="note">住宅街の隠れ家イタリアン。ドリンクフリーフローでコスパ◎。渋谷の喧騒を抜けた落ち着き。要予約。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=94997357445889808">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=94997357445889808">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<img class="thumb" loading="lazy" alt="スターバックス リザーブ ロースタリー 東京" onerror="imgFallback(this,'☕')" src="https://www.dezeen.com/wp-content/uploads/2019/03/starbucks-reserve-roastery-tokyo-kengo-kuma_dezeen_2364_col_4.jpg">
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<img class="thumb" loading="lazy" alt="スターバックス リザーブ ロースタリー 東京" onerror="imgFallback(this,'📍')" src="https://www.dezeen.com/wp-content/uploads/2019/03/starbucks-reserve-roastery-tokyo-kengo-kuma_dezeen_2364_col_4.jpg">
 <div class="body">
 <h3 class="name">スターバックス リザーブ ロースタリー 東京</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">昼デート</span><span class="tag">雨の日</span><span class="tag">おしゃれ</span><span class="tag">景色がいい</span><span class="tag">カフェ</span></div>
 <p class="note">隈研吾設計の4フロア・世界最大級スタバ。コーヒーフライトで体験型デートが◎。青葉台2-19-23。7:00〜22:00 無休。予約不可、行列必至のため平日朝イチ推奨。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Starbucks+Reserve+Roastery+Tokyo+Nakameguro">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Starbucks+Reserve+Roastery+Tokyo+Nakameguro">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<img class="thumb" loading="lazy" alt="葡萄酒処 SCAD" onerror="imgFallback(this,'🍷')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOqkTQNDCM7rAzAm_6NFC_dK43ZUvuAXdsM8GjROzSyROyT6g6V2qDyOkrQNGaq9FpvYs06JRzgpxOAXBXgK2dzzt0whYSZq_drTIlMZXFUvn2P0DKfy3adi1pdaypV4bvwSryH_J8l0iw9=s4800-w800-h600">
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<img class="thumb" loading="lazy" alt="葡萄酒処 SCAD" onerror="imgFallback(this,'📍')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOqkTQNDCM7rAzAm_6NFC_dK43ZUvuAXdsM8GjROzSyROyT6g6V2qDyOkrQNGaq9FpvYs06JRzgpxOAXBXgK2dzzt0whYSZq_drTIlMZXFUvn2P0DKfy3adi1pdaypV4bvwSryH_J8l0iw9=s4800-w800-h600">
 <div class="body">
 <h3 class="name">葡萄酒処 SCAD</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥¥</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">バー・一杯</span><span class="tag">隠れ家</span><span class="tag">2軒目</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">2軒目</span><span class="tag">記念日</span><span class="tag">隠れ家</span><span class="tag">おしゃれ</span><span class="tag">バー・一杯</span></div>
 <p class="note">2Fの隠れ家ワインバー。ソムリエ常騐、セレクション豊富。チャージあり・やや高めなので2軒目向き。看板が分かりにくいので注意。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=17442040676670836745">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=17442040676670836745">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="代官山" data-rain="1">
-<img class="thumb" loading="lazy" alt="蔦屋書店 代官山（代官山T-SITE）" onerror="imgFallback(this,'📚')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZO7cgkU_ODpihdKsnP6vpbltnUYi-JJ5cqwDqO3EZcU2A1WLHmnr-TDHXak3nrLjg8mjDYte3vRelFpC9lbFG5iNPQujTyoPPRPkyXxRgUDggZPhMMQv3VV-3Eh23LlBl_OZcqUGxzaYMxhfw=s4800-w800-h600">
+<article class="card" data-filter="代官山" data-flags="雨の日OK">
+<img class="thumb" loading="lazy" alt="蔦屋書店 代官山（代官山T-SITE）" onerror="imgFallback(this,'📍')" src="https://lh3.googleusercontent.com/place-photos/AJRVUZO7cgkU_ODpihdKsnP6vpbltnUYi-JJ5cqwDqO3EZcU2A1WLHmnr-TDHXak3nrLjg8mjDYte3vRelFpC9lbFG5iNPQujTyoPPRPkyXxRgUDggZPhMMQv3VV-3Eh23LlBl_OZcqUGxzaYMxhfw=s4800-w800-h600">
 <div class="body">
 <h3 class="name">蔦屋書店 代官山（代官山T-SITE）</h3>
-<div class="meta"><span>代官山</span><span>·</span><span>¥</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">本・カルチャー</span><span class="tag">カフェ</span><span class="tag">静か</span><span class="tag">昼デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥</span><span>·</span><span>代官山</span><span>·</span><span>★4.5</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">昼デート</span><span class="tag">雨の日</span><span class="tag">初デート</span><span class="tag">静か</span><span class="tag">おしゃれ</span><span class="tag">リラックス</span></div>
 <p class="note">写真・建築・アート本が充実。静かで会話が弾む。Share Loungeで一息も。雨・昼デートの鉄板。9〜22時。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=15490653164204088489">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?cid=15490653164204088489">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<div class="ph">🍷</div>
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">epulor</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.4</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">バー・一杯</span><span class="tag">カフェ</span><span class="tag">静か</span><span class="tag">2軒目</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.4</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">2軒目</span><span class="tag">サク飲み</span><span class="tag">昼デート</span><span class="tag">静か</span><span class="tag">おしゃれ</span><span class="tag">バー・一杯</span></div>
 <p class="note">路地裏の完全禁煙ミュージックカフェ＆ナチュラルワインバー。昼コーヒー→夜ワインで一日使える。青葉台1-19-12。11:00〜24:00、月曜定休。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=epulor+東京都目黒区青葉台1-19-12">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=epulor+東京都目黒区青葉台1-19-12">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<div class="ph">📚</div>
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">COW BOOKS</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥</span><span>·</span><span>★4.3</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">本・カルチャー</span><span class="tag">カフェ</span><span class="tag">静か</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.3</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">昼デート</span><span class="tag">静か</span><span class="tag">おしゃれ</span><span class="tag">リラックス</span><span class="tag">本・カルチャー</span></div>
 <p class="note">松浦弥太郎氏セレクトの古書＋コーヒー。目黒川沿い徒歩7分。青葉台1-14-11。12:00〜19:00、月曜定休。本を選ぶ会話で距離が縮まる。初デートの散歩コースに最適。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=COW+BOOKS+東京都目黒区青葉台1-14-11">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=COW+BOOKS+東京都目黒区青葉台1-14-11">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<div class="ph">🍝</div>
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">Il Lupone</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥</span><span>·</span><span>★4.3</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">ディナー</span><span class="tag">隠れ家</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.3</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">昼デート</span><span class="tag">隠れ家</span><span class="tag">リラックス</span><span class="tag">ディナー</span></div>
 <p class="note">駅から徒歩10分の本格イタリア20州料理。ランチコスパ良。25席・要予約。月休。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Il%20Lupone&amp;query_place_id=ChIJOYOZFTiLGGARqSGmAo2Z5QA">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Il%20Lupone&amp;query_place_id=ChIJOYOZFTiLGGARqSGmAo2Z5QA">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="蔵前" data-rain="1">
-<div class="ph">🍷</div>
+<article class="card" data-filter="蔵前" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">Bar Boushu 蔵前</h3>
-<div class="meta"><span>蔵前</span><span>·</span><span>¥¥</span><span>·</span><span>★4.2</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">バー・一杯</span><span class="tag">静か</span><span class="tag">2軒目</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>蔵前</span><span>·</span><span>★4.2</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">2軒目</span><span class="tag">記念日</span><span class="tag">静か</span><span class="tag">隠れ家</span><span class="tag">バー・一杯</span></div>
 <p class="note">蔵前駅徒歩2分。ウィスキープロフェッショナル資格者が営む落ち着いたバー。ウィスキー・ワイン・カクテルを揃える。柔らかい照明のゆったりした空間で2人の時間をゆっくり楽しめる。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/BarBoushu-Kuramae">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/BarBoushu-Kuramae">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<div class="ph">☕</div>
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">Alaska Zwei</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥</span><span>·</span><span>★4.2</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">静か</span><span class="tag">昼デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥</span><span>·</span><span>中目黒</span><span>·</span><span>★4.2</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">昼デート</span><span class="tag">静か</span><span class="tag">隠れ家</span><span class="tag">リラックス</span><span class="tag">カフェ</span></div>
 <p class="note">住宅街に静かに佇むヴィーガンカフェ。本が充実しゆったりした空間で読書デートに最適。東山2-5-7。9:00〜18:00。月曜定休（要事前確認）。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Alaska+Zwei+東京都目黒区東山2-5-7">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Alaska+Zwei+東京都目黒区東山2-5-7">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="蔵前" data-rain="1">
-<div class="ph">☕</div>
+<article class="card" data-filter="蔵前" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">Nui. HOSTEL &amp; BAR LOUNGE</h3>
-<div class="meta"><span>蔵前</span><span>·</span><span>¥¥</span><span>·</span><span>★4</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">バー・一杯</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>蔵前</span><span>·</span><span>★4</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">2軒目</span><span class="tag">おしゃれ</span><span class="tag">リラックス</span><span class="tag">カフェ</span><span class="tag">バー・一杯</span></div>
 <p class="note">蔵前のパイオニア的ヴィンテージ倉庫リノベ空間。国際的な旅人が集うホステル併設カフェ＆バー。昼はスペシャルティコーヒー、夜はクラフトビールが楽しめる。开放的な高天井が心地よい。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Nui-Hostel-Kuramae">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Nui-Hostel-Kuramae">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="蔵前" data-rain="1">
-<div class="ph">☕</div>
+<article class="card" data-filter="蔵前" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">ダンデライオン・チョコレート ファクトリー&amp;カフェ蔵前</h3>
-<div class="meta"><span>蔵前</span><span>·</span><span>¥¥</span><span>·</span><span>★3.8</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>蔵前</span><span>·</span><span>★3.8</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">昼デート</span><span class="tag">雨の日</span><span class="tag">おしゃれ</span><span class="tag">リラックス</span><span class="tag">カフェ</span></div>
 <p class="note">SFベイエリア発Bean-to-barチョコ専門店の日本1号店。製造工場を見ながらカカオの産地ごとのチョコを味わえる。Tabelog Sweets TOKYO 100選（2023）選出。2階席あり。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Dandelion-Chocolate-Kuramae">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Dandelion-Chocolate-Kuramae">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="蔵前" data-rain="0">
-<div class="ph">☕</div>
+<article class="card" data-filter="蔵前" data-flags="">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">ASAGE CAFE カワドコ CAFE &amp; BAR</h3>
-<div class="meta"><span>蔵前</span><span>·</span><span>¥¥</span><span>·</span><span>★3.7</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">ディナー</span><span class="tag">景色がいい</span><span class="tag">昼デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>蔵前</span><span>·</span><span>★3.7</span></div>
+<div class="tags"><span class="tag">昼デート</span><span class="tag">記念日</span><span class="tag">景色がいい</span><span class="tag">おしゃれ</span><span class="tag">カフェ</span><span class="tag">ディナー</span></div>
 <p class="note">隅田川沿いウッディ空間＋テラス席。スカイツリーが見える眺望が自慢。こだわり素材の肉料理。晴れた日の特別感デートや記念日ランチ・ディナーに最適。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/AsageCafe-Kuramae">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/AsageCafe-Kuramae">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="蔵前" data-rain="1">
-<div class="ph">☕</div>
+<article class="card" data-filter="蔵前" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">ペリカンカフェ</h3>
-<div class="meta"><span>蔵前</span><span>·</span><span>¥</span><span>·</span><span>★3.69</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">静か</span><span class="tag">昼デート</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥</span><span>·</span><span>蔵前</span><span>·</span><span>★3.69</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">昼デート</span><span class="tag">初デート</span><span class="tag">静か</span><span class="tag">リラックス</span><span class="tag">カフェ</span></div>
 <p class="note">1942年創業「ペリカン」の直営カフェ。炭火焼き厚切り食パンのトーストセットが名物。ナチュラルウッドのシンプルな空間。朝から行列ができる実力店。田原町駅徒歩4分。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Pelican-Cafe-Kuramae">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Pelican-Cafe-Kuramae">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="中目黒" data-rain="1">
-<div class="ph">🍝</div>
+<article class="card" data-filter="中目黒" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">La Luna Rossa</h3>
-<div class="meta"><span>中目黒</span><span>·</span><span>¥¥¥</span><span>·</span><span>★3.51</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">ディナー</span><span class="tag">おしゃれ</span><span class="tag">記念日</span></div>
+<div class="meta"><span>2026/06/16</span><span>·</span><span>気になる</span><span>·</span><span>¥¥¥</span><span>·</span><span>中目黒</span><span>·</span><span>★3.51</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">記念日</span><span class="tag">初デート</span><span class="tag">おしゃれ</span><span class="tag">隠れ家</span><span class="tag">ディナー</span></div>
 <p class="note">目黒川沿いの隠れ家イタリアン。300本超ワインセラーでペアリング提案可。食べログ3.51。夜¥10,000〜¥15,000。要予約。ランチもあり（11:30〜）。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=La+Luna+Rossa+中目黒+イタリアン+目黒川">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=La+Luna+Rossa+中目黒+イタリアン+目黒川">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="恵比寿" data-rain="1">
-<div class="ph">🍝</div>
+<article class="card" data-filter="恵比寿" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">HEARTH（ハース）恵比寿本店</h3>
-<div class="meta"><span>恵比寿</span><span>·</span><span>¥¥</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">ディナー</span><span class="tag">カフェ</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/17</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>恵比寿</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">昼デート</span><span class="tag">おしゃれ</span><span class="tag">リラックス</span><span class="tag">ディナー</span><span class="tag">カフェ</span></div>
 <p class="note">A5黒毛和牛ビステッカ×ガレットが看板。木の温もりある空間に個室あり。ランチ¥1,000〜、ディナー¥5,000〜。JR恵比寿駅徒歩3分。月〜金11:30〜22:30、土11:30〜23:00。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=HEARTH+ハース+東京都渋谷区恵比寿西1-15-8">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=HEARTH+ハース+東京都渋谷区恵比寿西1-15-8">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="恵比寿" data-rain="1">
-<div class="ph">☕</div>
+<article class="card" data-filter="恵比寿" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">猿田彦珈琲 恵比寿本店</h3>
-<div class="meta"><span>恵比寿</span><span>·</span><span>¥</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">カフェ</span><span class="tag">おしゃれ</span><span class="tag">昼デート</span></div>
+<div class="meta"><span>2026/06/17</span><span>·</span><span>気になる</span><span>·</span><span>¥</span><span>·</span><span>恵比寿</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">昼デート</span><span class="tag">初デート</span><span class="tag">おしゃれ</span><span class="tag">静か</span><span class="tag">カフェ</span></div>
 <p class="note">2011年創業、スペシャルティコーヒーの先駆け。農園直輸入・自家焙煎豆のドリップ1杯で空間がひとつ締まる。月〜木8:00〜22:30、土日10:00〜。恵比寿駅徒歩2分。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=猿田彦珈琲+恵比寿本店+東京都渋谷区恵比寿1-6-6">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=猿田彦珈琲+恵比寿本店+東京都渋谷区恵比寿1-6-6">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="恵比寿" data-rain="1">
-<div class="ph">🍷</div>
+<article class="card" data-filter="恵比寿" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">恵比寿山の上バル</h3>
-<div class="meta"><span>恵比寿</span><span>·</span><span>¥¥</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">バー・一杯</span><span class="tag">ディナー</span><span class="tag">おしゃれ</span><span class="tag">初デート</span></div>
+<div class="meta"><span>2026/06/17</span><span>·</span><span>気になる</span><span>·</span><span>¥¥</span><span>·</span><span>恵比寿</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">初デート</span><span class="tag">記念日</span><span class="tag">おしゃれ</span><span class="tag">隠れ家</span><span class="tag">景色がいい</span><span class="tag">バー・一杯</span></div>
 <p class="note">丘の上の一軒家イタリアンバル。飛騨家具のカウンター席で100種超ワインをゆっくり楽しめる。ソムリエによるペアリング提案あり。月〜木12:00〜23:00。恵比寿駅徒歩5分。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=恵比寿山の上バル+東京都渋谷区恵比寿南1-16-3">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=恵比寿山の上バル+東京都渋谷区恵比寿南1-16-3">開く →</a></div>
 </div>
 </article>
-<article class="card" data-area="恵比寿" data-rain="1">
-<div class="ph">🍷</div>
+<article class="card" data-filter="恵比寿" data-flags="雨の日OK">
+<div class="ph">📍</div>
 <div class="body">
 <h3 class="name">Winestand Waltz（ワインスタンド ワルツ）</h3>
-<div class="meta"><span>恵比寿</span><span>·</span><span>¥</span><span>·</span><span>☔ 雨OK</span></div>
-<div class="tags"><span class="tag">バー・一杯</span><span class="tag">おしゃれ</span><span class="tag">2軒目</span></div>
+<div class="meta"><span>2026/06/17</span><span>·</span><span>気になる</span><span>·</span><span>¥</span><span>·</span><span>恵比寿</span><span>·</span><span>☔ 雨の日OK</span></div>
+<div class="tags"><span class="tag">2軒目</span><span class="tag">サク飲み</span><span class="tag">おしゃれ</span><span class="tag">隠れ家</span><span class="tag">静か</span><span class="tag">バー・一杯</span></div>
 <p class="note">路地裏の立ち飲みナチュラルワインバー。パリジャンにも認められた東京屈指の名店。グラス¥1,200〜。月〜土18:00〜24:00、日曜定休。恵比寿駅徒歩6分。</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Winestand+Waltz+東京都渋谷区恵比寿4-24-3+シマダビル1F">Googleマップ →</a></div>
+<div class="foot"><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Winestand+Waltz+東京都渋谷区恵比寿4-24-3+シマダビル1F">開く →</a></div>
 </div>
 </article>
 </div>
-<footer>データ：📍 Date Spots Library（Notion）· 自動更新</footer>
+<footer>データ：Notion · GitHub Actionsで自動更新</footer>
 </div>
 <script>
 const chips=[...document.querySelectorAll('.chip')];
 const cards=[...document.querySelectorAll('.card')];
 chips.forEach(c=>c.addEventListener('click',()=>{
   chips.forEach(x=>x.classList.remove('active'));c.classList.add('active');
-  const f=c.dataset.f;
+  const type=c.dataset.type, val=c.dataset.val;
   cards.forEach(card=>{
-    let show = f==='all' ? true : (f==='rain' ? card.dataset.rain==='1' : card.dataset.area===f);
+    let show=true;
+    if(type==='filter'){ show=(card.dataset.filter||'').split('|').includes(val); }
+    else if(type==='flag'){ show=(card.dataset.flags||'').split('|').includes(val); }
     card.classList.toggle('hidden',!show);
   });
 }));
