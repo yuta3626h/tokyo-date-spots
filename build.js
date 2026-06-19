@@ -1,18 +1,56 @@
 const fs = require("fs");
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
-const DATABASE_ID = "5fb254cf5f634ed59285646958bc8855"; // あなたの Date Spots Library
 
-const emojiByType = {"カフェ":"☕","ディナー":"🍝","バー・一杯":"🍷","アクティビティ":"🎯","本・カルチャー":"📚","景色・散歩":"🌳"};
-const txt = r => (r||[]).map(x=>x.plain_text).join("");
-const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+/* ===========================================================
+   ここだけ編集すればOK：サイトにしたいルーチン(DB)を並べる
+   - out        : 出力するHTMLファイル名
+   - databaseId : NotionのデータベースID(URLの /p/ の後ろの文字列)
+   - eyebrow    : 小見出し(英字)
+   - title      : ページ見出し
+   - filterBy   : フィルター用プロパティ名(select か multi_select)。無指定で自動、""で無効。
+   - sort       : { by:"プロパティ名", dir:"desc"|"asc" }。無指定で自動(数値→日付の順で降順)。
+   後でルーチンを足したくなったら、このリストにブロックを1つ足すだけ。
+   =========================================================== */
+const SITES = [
+  {
+    out: "index.html",
+    databaseId: "5fb254cf5f634ed59285646958bc8855",   // 📍 Date Spots Library
+    eyebrow: "Date Spots",
+    title: "東京・デートスポット図書館",
+    filterBy: "Area",
+    sort: { by: "Rating", dir: "desc" },
+  },
+  {
+    out: "fashion.html",
+    databaseId: "75c90455677d4adda453ff4a3c984de1",                // 👕 Fashion & Style Brief ← ここにIDを貼る
+    eyebrow: "Fashion & Style",
+    title: "ファッション・スタイル集",
+    // filterBy / sort は自動
+  },
+  {
+    out: "events.html",
+    databaseId: "957baa6586c742c28143ad1963c9f4e2",   // 🎉 Events & Outings
+    eyebrow: "Events & Outings",
+    title: "イベント・おでかけ",
+    sort: { by: "開催日", dir: "asc" },               // 近い日付順
+  },
+];
 
-async function queryAll(){
-  let out=[], cursor;
-  do{
-    const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`,{
-      method:"POST",
-      headers:{Authorization:`Bearer ${NOTION_TOKEN}`,"Notion-Version":"2022-06-28","Content-Type":"application/json"},
-      body: JSON.stringify(cursor?{start_cursor:cursor,page_size:100}:{page_size:100})
+/* ---------- 以下は触らなくてOK(共通エンジン) ---------- */
+const txt = r => (r || []).map(x => x.plain_text).join("");
+const esc = s => (s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const looksLikeImage = u =>
+  /\.(png|jpe?g|gif|webp|avif)(\?|#|$)/i.test(u) ||
+  /img\.youtube\.com/.test(u) ||
+  /lh3\.googleusercontent\.com/.test(u);
+
+async function queryAll(databaseId){
+  let out = [], cursor;
+  do {
+    const res = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
+      method: "POST",
+      headers: { Authorization:`Bearer ${NOTION_TOKEN}`, "Notion-Version":"2022-06-28", "Content-Type":"application/json" },
+      body: JSON.stringify(cursor ? { start_cursor:cursor, page_size:100 } : { page_size:100 }),
     });
     if(!res.ok) throw new Error(`Notion API ${res.status}: ${await res.text()}`);
     const d = await res.json();
@@ -22,49 +60,124 @@ async function queryAll(){
   return out;
 }
 
-function card(p){
-  const P=p.properties;
-  const name=txt(P["Name"]?.title);
-  const area=P["Area"]?.select?.name||"その他";
-  const types=(P["Type"]?.multi_select||[]).map(o=>o.name);
-  const vibes=(P["Vibe"]?.multi_select||[]).map(o=>o.name);
-  const good=(P["Good for"]?.multi_select||[]).map(o=>o.name);
-  const price=P["Price"]?.select?.name||"";
-  const rain=!!P["雨の日OK"]?.checkbox;
-  const rating=P["Rating"]?.number;
-  const maps=P["Maps"]?.url||"#";
-  const note=txt(P["Notes"]?.rich_text);
-  const image=(P["Image"]&&P["Image"].url)||(p.cover&&(p.cover.external?.url||p.cover.file?.url))||"";
-  const emoji=emojiByType[types[0]]||"📍";
-  const tags=[...types,...vibes.slice(0,1),...good.slice(0,1)];
-  const meta=[area,price,rating!=null?("★"+rating):null,rain?"☔ 雨OK":null].filter(Boolean);
-  const thumb=image
-    ? `<img class="thumb" loading="lazy" alt="${esc(name)}" onerror="imgFallback(this,'${emoji}')" src="${esc(image)}">`
-    : `<div class="ph">${emoji}</div>`;
-  return `<article class="card" data-area="${esc(area)}" data-rain="${rain?1:0}">
+function readProps(p){
+  const props = p.properties || {};
+  let title="", note="", link="", image="";
+  const tags=[], selects=[], numbers=[], checks=[], dates=[];
+  for(const [key, val] of Object.entries(props)){
+    switch(val.type){
+      case "title": title = txt(val.title); break;
+      case "rich_text": if(!note) note = txt(val.rich_text); break;
+      case "url": {
+        const u = val.url || ""; if(!u) break;
+        if(!image && (looksLikeImage(u) || /(image|画像|photo|thumb|サムネ|cover|写真)/i.test(key))) image = u;
+        else if(!link) link = u;
+        break;
+      }
+      case "select": if(val.select) selects.push({ key, name: val.select.name }); break;
+      case "multi_select": (val.multi_select || []).forEach(o => tags.push({ key, name: o.name })); break;
+      case "number": if(val.number != null) numbers.push({ key, value: val.number }); break;
+      case "checkbox": checks.push({ key, value: !!val.checkbox }); break;
+      case "date": if(val.date && val.date.start) dates.push({ key, start: val.date.start, end: val.date.end }); break;
+    }
+  }
+  if(!image && p.cover) image = (p.cover.external && p.cover.external.url) || (p.cover.file && p.cover.file.url) || "";
+  return { title, note, link, image, tags, selects, numbers, checks, dates };
+}
+
+const fmtDate = s => { try { return new Date(s).toLocaleDateString("ja-JP",{ timeZone:"Asia/Tokyo", year:"numeric", month:"2-digit", day:"2-digit" }); } catch { return s; } };
+
+function metaParts(d){
+  const parts = [];
+  d.dates.forEach(x => parts.push(x.end ? `${fmtDate(x.start)}–${fmtDate(x.end)}` : fmtDate(x.start)));
+  d.selects.forEach(x => parts.push(x.name));
+  d.numbers.forEach(x => parts.push(/(rating|評価|score|星)/i.test(x.key) ? "★"+x.value : `${x.key}: ${x.value}`));
+  d.checks.filter(x => x.value).forEach(x => parts.push((/(雨|rain)/i.test(x.key) ? "☔ " : "✓ ") + x.key));
+  return parts;
+}
+
+function filterValuesFor(d, filterBy){
+  if(filterBy === "") return [];
+  if(filterBy){
+    const sel = d.selects.find(s => s.key === filterBy);
+    if(sel) return [sel.name];
+    const multi = d.tags.filter(t => t.key === filterBy).map(t => t.name);
+    if(multi.length) return multi;
+    return [];
+  }
+  if(d.selects[0]) return [d.selects[0].name];
+  if(d.tags[0]) return [d.tags[0].name];
+  return [];
+}
+
+function card(p, site){
+  const d = readProps(p);
+  const name = d.title || "(無題)";
+  const meta = metaParts(d);
+  const tagNames = [...new Set(d.tags.map(t => t.name))].slice(0, 6);
+  const fvals = filterValuesFor(d, site.filterBy);
+  const flags = d.checks.filter(c => c.value).map(c => c.key);
+  const thumb = d.image
+    ? `<img class="thumb" loading="lazy" alt="${esc(name)}" onerror="imgFallback(this,'📍')" src="${esc(d.image)}">`
+    : `<div class="ph">📍</div>`;
+  const linkBtn = d.link ? `<div class="foot"><a class="btn" target="_blank" rel="noopener" href="${esc(d.link)}">開く →</a></div>` : "";
+  return `<article class="card" data-filter="${esc(fvals.join("|"))}" data-flags="${esc(flags.join("|"))}">
 ${thumb}
 <div class="body">
 <h3 class="name">${esc(name)}</h3>
-<div class="meta">${meta.map(b=>`<span>${esc(b)}</span>`).join('<span>·</span>')}</div>
-<div class="tags">${tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
-<p class="note">${esc(note)}</p>
-<div class="foot"><a class="btn" target="_blank" rel="noopener" href="${esc(maps)}">Googleマップ →</a></div>
+${meta.length ? `<div class="meta">${meta.map(b=>`<span>${esc(b)}</span>`).join('<span>·</span>')}</div>` : ""}
+${tagNames.length ? `<div class="tags">${tagNames.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
+${d.note ? `<p class="note">${esc(d.note)}</p>` : ""}
+${linkBtn}
 </div>
 </article>`;
 }
 
-(async()=>{
-  const spots = await queryAll();
-  spots.sort((a,b)=>((b.properties["Rating"]?.number??-1)-(a.properties["Rating"]?.number??-1)));
-  const areas=[...new Set(spots.map(s=>s.properties["Area"]?.select?.name).filter(Boolean))];
-  const chips=`<button class="chip active" data-f="all">すべて</button>`+
-    areas.map(a=>`<button class="chip" data-f="${esc(a)}">${esc(a)}</button>`).join("")+
-    `<button class="chip" data-f="rain">☔ 雨の日OK</button>`;
-  const today=new Date().toLocaleDateString("ja-JP",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"});
+function sortPages(pages, site){
+  const get = (p, key) => {
+    const d = readProps(p);
+    const n = d.numbers.find(x => x.key === key); if(n) return n.value;
+    const dt = d.dates.find(x => x.key === key); if(dt) return new Date(dt.start).getTime();
+    return null;
+  };
+  let by = site.sort && site.sort.by;
+  let dir = (site.sort && site.sort.dir) || "desc";
+  if(!by){
+    const sample = readProps(pages[0] || { properties:{} });
+    if(sample.numbers[0]) by = sample.numbers[0].key;
+    else if(sample.dates[0]) { by = sample.dates[0].key; dir = "desc"; }
+  }
+  if(!by) return pages;
+  const sign = dir === "asc" ? 1 : -1;
+  return [...pages].sort((a,b) => {
+    const va = get(a, by), vb = get(b, by);
+    if(va == null && vb == null) return 0;
+    if(va == null) return 1;
+    if(vb == null) return -1;
+    return (va - vb) * sign;
+  });
+}
 
-  const html=`<!DOCTYPE html>
+function buildChips(pages, site){
+  const vals = new Set(), flags = new Set();
+  pages.forEach(p => {
+    const d = readProps(p);
+    filterValuesFor(d, site.filterBy).forEach(v => v && vals.add(v));
+    d.checks.filter(c => c.value).forEach(c => flags.add(c.key));
+  });
+  let chips = `<button class="chip active" data-type="all">すべて</button>`;
+  [...vals].forEach(v => chips += `<button class="chip" data-type="filter" data-val="${esc(v)}">${esc(v)}</button>`);
+  [...flags].forEach(f => chips += `<button class="chip" data-type="flag" data-val="${esc(f)}">${(/(雨|rain)/i.test(f)?"☔ ":"")}${esc(f)}</button>`);
+  return chips;
+}
+
+function pageHtml(pages, site){
+  const sorted = sortPages(pages, site);
+  const chips = buildChips(sorted, site);
+  const today = new Date().toLocaleDateString("ja-JP",{ timeZone:"Asia/Tokyo", year:"numeric", month:"2-digit", day:"2-digit" });
+  return `<!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Date Spots · Tokyo</title>
+<title>${esc(site.title)}</title>
 <script>function imgFallback(el,e){const d=document.createElement('div');d.className='ph';d.textContent=e;el.replaceWith(d);}</script>
 <style>
 :root{--bg:#faf9f7;--card:#fff;--ink:#1a1a1a;--muted:#8a8a8a;--line:#ececec;--chip:#f1f0ed;}
@@ -74,6 +187,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,Bl
 .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
 h1{font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.02em;}
 .sub{color:var(--muted);font-size:14px;margin:0;}
+.nav{display:flex;gap:14px;margin:18px 0 0;font-size:13px;}
+.nav a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;}
+.nav a:hover{color:var(--ink);}
+.nav a.on{color:var(--ink);border-color:var(--ink);}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px;}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s;}
 .chip:hover{border-color:#cfcfcf;}
@@ -93,31 +210,57 @@ h1{font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.02em;}
 .btn{display:inline-block;font-size:13px;text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:7px 16px;color:var(--ink);transition:.15s;}
 .btn:hover{background:var(--ink);color:#fff;}
 footer{margin-top:48px;color:#b0b0b0;font-size:12px;text-align:center;}
-footer a{color:#8a8a8a;}
 .hidden{display:none!important;}
 </style></head><body>
 <div class="wrap">
-<header><p class="eyebrow">Date Spots</p><h1>東京・デートスポット図書館</h1>
-<p class="sub">全${spots.length}件 · 最終更新 ${today} · クリーン／ミニマルで使えるところだけ</p></header>
+<header>
+<p class="eyebrow">${esc(site.eyebrow)}</p>
+<h1>${esc(site.title)}</h1>
+<p class="sub">全${sorted.length}件 · 最終更新 ${today}</p>
+<nav class="nav">
+<a href="index.html"${site.out==="index.html"?' class="on"':''}>デート</a>
+<a href="fashion.html"${site.out==="fashion.html"?' class="on"':''}>ファッション</a>
+<a href="events.html"${site.out==="events.html"?' class="on"':''}>イベント</a>
+</nav>
+</header>
 <div class="filters">${chips}</div>
 <div class="grid">
-${spots.map(card).join("\n")}
+${sorted.map(p => card(p, site)).join("\n")}
 </div>
-<footer>データ：📍 Date Spots Library（Notion）· 自動更新</footer>
+<footer>データ：Notion · GitHub Actionsで自動更新</footer>
 </div>
 <script>
 const chips=[...document.querySelectorAll('.chip')];
 const cards=[...document.querySelectorAll('.card')];
 chips.forEach(c=>c.addEventListener('click',()=>{
   chips.forEach(x=>x.classList.remove('active'));c.classList.add('active');
-  const f=c.dataset.f;
+  const type=c.dataset.type, val=c.dataset.val;
   cards.forEach(card=>{
-    let show = f==='all' ? true : (f==='rain' ? card.dataset.rain==='1' : card.dataset.area===f);
+    let show=true;
+    if(type==='filter'){ show=(card.dataset.filter||'').split('|').includes(val); }
+    else if(type==='flag'){ show=(card.dataset.flags||'').split('|').includes(val); }
     card.classList.toggle('hidden',!show);
   });
 }));
 </script>
 </body></html>`;
-  fs.writeFileSync("index.html", html);
-  console.log(`Built index.html with ${spots.length} spots.`);
+}
+
+(async () => {
+  let ok = 0;
+  for(const site of SITES){
+    try {
+      if(!site.databaseId || site.databaseId.startsWith("PASTE_")){
+        console.log(`Skip ${site.out}: databaseId 未設定`);
+        continue;
+      }
+      const pages = await queryAll(site.databaseId);
+      fs.writeFileSync(site.out, pageHtml(pages, site));
+      console.log(`Built ${site.out} with ${pages.length} items.`);
+      ok++;
+    } catch (e) {
+      console.error(`FAILED ${site.out}: ${e.message}`);
+    }
+  }
+  console.log(`Done. ${ok}/${SITES.length} pages built.`);
 })();
